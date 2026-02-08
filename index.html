@@ -5,117 +5,124 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Roy & Trivena Wedding</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family:'Poppins',sans-serif;
-  overflow:hidden;
-  color:#fff;
-}
-section{
-  height:100vh;
-  width:100%;
-  position:absolute;
-  top:0;left:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:30px;
-  transition:transform .8s ease;
-}
-.bg{
-  position:absolute;
-  inset:0;
-  background-size:cover;
-  background-position:center;
-  filter:blur(6px) brightness(.6);
-  z-index:-1;
-}
-.gold{color:#d4af37}
-h1,h2{font-family:'Playfair Display',serif}
-
-button{
-  padding:14px 28px;
-  border:none;
-  background:#d4af37;
-  color:#000;
-  font-weight:600;
-  border-radius:30px;
-  cursor:pointer;
-  margin-top:20px;
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  background:#000;
 }
 
-.slide{transform:translateY(100%)}
-.slide.active{transform:translateY(0)}
-
-.nav{
-  position:fixed;
-  right:15px;
-  top:50%;
-  transform:translateY(-50%);
-}
-.nav div{
-  width:10px;height:10px;
-  background:#fff;
-  border-radius:50%;
-  margin:10px 0;
-  opacity:.4;
-}
-.nav .active{opacity:1;background:#d4af37}
-
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-}
-.gallery img{
-  width:100%;
-  border-radius:12px;
+section {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  transition: transform .9s ease;
 }
 
-form input,form textarea{
-  width:100%;
-  padding:12px;
-  margin:8px 0;
-  border-radius:10px;
-  border:none;
+.bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(6px) brightness(.55);
+  z-index: -1;
 }
-form button{width:100%}
 
-audio{display:none}
+.gold { color: #d4af37; }
+
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+}
+
+button {
+  padding: 14px 30px;
+  border-radius: 30px;
+  border: none;
+  background: #d4af37;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 10px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 14px;
+}
+
+form input, form textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  margin: 6px 0;
+}
+
+form button {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.swipe {
+  position: absolute;
+  bottom: 25px;
+  font-size: 12px;
+  opacity: .8;
+  animation: updown 1.6s infinite;
+}
+
+@keyframes updown {
+  0% { transform: translateY(0); opacity:.4 }
+  50% { transform: translateY(8px); opacity:1 }
+  100% { transform: translateY(0); opacity:.4 }
+}
+
+audio { display:none; }
 </style>
 </head>
 
 <body>
 
-<audio id="music" autoplay loop>
+<audio id="music" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<!-- COVER -->
-<section class="slide active">
+<section>
   <div class="bg" style="background-image:url('img/photo1.jpg')"></div>
   <div>
     <h1>Roy & Trivena</h1>
     <p class="gold">June 26, 2026</p>
-    <button onclick="next()">Open Invitation</button>
+    <button onclick="openInvite()">Open Invitation</button>
+    <div class="swipe">Swipe Up ↑</div>
   </div>
 </section>
 
-<!-- COUPLE -->
-<section class="slide">
+<section>
   <div class="bg" style="background-image:url('img/photo2.jpg')"></div>
   <div>
     <h2>The Wedding of</h2>
     <h1 class="gold">Roy Alfredo Marselino Rengkung<br>&<br>Trivena Injili Rambing</h1>
+    <div class="swipe">Swipe Up ↑</div>
   </div>
 </section>
 
-<!-- EVENT -->
-<section class="slide">
+<section>
   <div class="bg" style="background-image:url('img/photo3.jpg')"></div>
   <div>
     <h2>Holy Matrimony</h2>
@@ -128,14 +135,14 @@ audio{display:none}
     <br>
     <h3 id="countdown" class="gold"></h3>
     <br>
-    <a href="https://wa.me/6281234567890" target="_blank">
+    <a href="https://wa.me/6281234567890">
       <button>RSVP via WhatsApp</button>
     </a>
+    <div class="swipe">Swipe Up ↑</div>
   </div>
 </section>
 
-<!-- GALLERY -->
-<section class="slide">
+<section>
   <div class="bg" style="background-image:url('img/photo4.jpg')"></div>
   <div>
     <h2 class="gold">Our Gallery</h2>
@@ -149,78 +156,65 @@ audio{display:none}
       <img src="img/photo7.jpg">
       <img src="img/photo8.jpg">
     </div>
+    <div class="swipe">Swipe Up ↑</div>
   </div>
 </section>
 
-<!-- WISHES -->
-<section class="slide">
+<section>
   <div class="bg" style="background-image:url('img/photo5.jpg')"></div>
-  <div style="width:100%;max-width:400px">
+  <div style="width:90%;max-width:380px">
     <h2 class="gold">Wishes & Prayers</h2>
     <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
       <input type="text" name="name" placeholder="Your Name" required>
-      <textarea name="message" rows="4" placeholder="Your Wishes" required></textarea>
+      <textarea name="message" placeholder="Your Wishes" rows="4" required></textarea>
       <button type="submit">Send</button>
     </form>
   </div>
 </section>
 
-<div class="nav">
-  <div class="active"></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-</div>
-
 <script>
-let slides=document.querySelectorAll('.slide')
-let dots=document.querySelectorAll('.nav div')
-let index=0
+const slides = document.querySelectorAll("section");
+let current = 0;
 
-function show(i){
-  slides.forEach((s,n)=>{
-    s.classList.remove('active')
-    dots[n].classList.remove('active')
-  })
-  slides[i].classList.add('active')
-  dots[i].classList.add('active')
+function showSlide(i){
+  slides.forEach((s, idx) => {
+    s.style.transform = `translateY(${(idx - i) * 100}vh)`;
+  });
+}
+
+function openInvite(){
+  document.getElementById("music").play();
+  next();
 }
 
 function next(){
-  if(index<slides.length-1){
-    index++
-    show(index)
+  if(current < slides.length - 1){
+    current++;
+    showSlide(current);
   }
 }
 
-document.body.addEventListener('click',()=> {
-  document.getElementById('music').play()
-},{once:true})
+let startY = 0;
+document.addEventListener("touchstart", e => {
+  startY = e.touches[0].clientY;
+});
 
-const target=new Date("June 26, 2026 10:00:00").getTime()
-setInterval(()=>{
-  let now=new Date().getTime()
-  let d=target-now
-  let days=Math.floor(d/(1000*60*60*24))
-  document.getElementById('countdown').innerHTML=
-    days+" Days to Go"
-},1000)
+document.addEventListener("touchend", e => {
+  let endY = e.changedTouches[0].clientY;
+  if(startY - endY > 50) next();
+});
+
+showSlide(0);
+
+const target = new Date("June 26, 2026 10:00:00").getTime();
+setInterval(() => {
+  let now = new Date().getTime();
+  let d = target - now;
+  let days = Math.floor(d / (1000*60*60*24));
+  document.getElementById("countdown").innerHTML =
+    days + " Days to Go";
+}, 1000);
 </script>
 
 </body>
 </html>
-<script>
-let startY = 0;
-
-document.addEventListener('touchstart', e => {
-  startY = e.touches[0].clientY;
-});
-
-document.addEventListener('touchend', e => {
-  let endY = e.changedTouches[0].clientY;
-  if(startY - endY > 50){
-    next();
-  }
-});
-</script>
